@@ -35,7 +35,7 @@ func distanceSlow(s, t string, len_s, len_t int) int {
 		cost = 1
 	}
 
-	return minumum(distanceSlow(s, t, len_s-1, len_t)+1,
+	return minimum(distanceSlow(s, t, len_s-1, len_t)+1,
 		distanceSlow(s, t, len_s, len_t-1)+1,
 		distanceSlow(s, t, len_s-1, len_t-1)+cost)
 }

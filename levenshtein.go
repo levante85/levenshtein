@@ -6,9 +6,8 @@ package levenshtein
 // version of maximasing speed over space consumption
 func Distance(s, t string) ([][]int, int) {
 	var (
-		cost = 0
-		n    = len(s)
-		m    = len(t)
+		n = len(s)
+		m = len(t)
 	)
 
 	switch {
@@ -21,14 +20,11 @@ func Distance(s, t string) ([][]int, int) {
 	d := buildMatrix(n, m)
 
 	for i := 1; i <= n; i++ {
-		cs := s[i-1]
-
 		for j := 1; j <= m; j++ {
-			ct := t[j-1]
 
-			if cs == ct {
-				cost = 0
-			} else {
+			cost := 0
+
+			if s[i-1] != t[j-1] {
 				cost = 1
 			}
 

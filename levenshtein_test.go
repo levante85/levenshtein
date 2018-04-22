@@ -24,6 +24,15 @@ func TestDistance3(t *testing.T) {
 	}
 }
 
+func TestDistance23(t *testing.T) {
+	s := "Simple math in any numeral"
+	v := "Math equation simplification"
+	_, dist := Distance(s, v)
+	if dist != 23 {
+		t.Fatal("Distance should be 23 instead is: ", dist)
+	}
+}
+
 func BenchmarkDistance(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Distance("GUMBO", "GAMBOL")
@@ -54,6 +63,20 @@ func distanceSlow(s, t string, len_s, len_t int) int {
 func BenchmarkDistanceSlow(b *testing.B) {
 	s := "gumbo"
 	t := "gambol"
+	for i := 0; i < b.N; i++ {
+		distanceSlow(s, t, len(s), len(t))
+	}
+}
+func BenchmarkDistance23(b *testing.B) {
+	s := "Simple math in any numeral"
+	t := "Math equation simplification"
+	for i := 0; i < b.N; i++ {
+		Distance(s, t)
+	}
+}
+func BenchmarkDistanceSlow23(b *testing.B) {
+	s := "Simple math in any numeral"
+	t := "Math equation simplification"
 	for i := 0; i < b.N; i++ {
 		distanceSlow(s, t, len(s), len(t))
 	}

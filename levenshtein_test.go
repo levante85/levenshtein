@@ -1,16 +1,27 @@
 package levenshtein
 
 import (
-	"fmt"
 	"testing"
 )
 
-func TestDistance(t *testing.T) {
-	mat, dist := Distance("GUMBO", "GAMBOL")
+func TestDistance1(t *testing.T) {
+	_, dist := Distance("GUMBO", "GAMBO")
+	if dist != 1 {
+		t.Fatal("Distance should be 1 instead is: ", dist)
+	}
+}
+func TestDistance2(t *testing.T) {
+	_, dist := Distance("GUMBO", "GAMBOL")
 	if dist != 2 {
 		t.Fatal("Distance should be 2 instead is: ", dist)
 	}
-	fmt.Println(mat)
+}
+
+func TestDistance3(t *testing.T) {
+	_, dist := Distance("GUMBO", "AAMBOL")
+	if dist != 3 {
+		t.Fatal("Distance should be 3 instead is: ", dist)
+	}
 }
 
 func BenchmarkDistance(b *testing.B) {
